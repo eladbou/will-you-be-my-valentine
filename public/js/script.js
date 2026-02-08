@@ -1,19 +1,19 @@
 const answers_no = [
     "לא",
     "את בטוחה?",
-    "את ממש בטוחה??",
-    "את ממש ממש בטוחה???",
+    "נו עדן",
+    "יהיה כיף אני מבטיח",
     "תחשבי שוב?",
-    "לא מאמינה בהזדמנות שנייה?",
-    "למה את כזו קרה?",
+    "לא מאמינה בהזדמנות שניה?",
+    "זיגי אומר שכדאי לך",
     "אולי נדבר על זה?",
-    "אני לא מתכוון לשאול שוב!",
-    "אוקיי זה כבר פוגע ברגשות שלי!",
+    "אני לא מתכוון לשאול שוב",
+    "פליז אני אחבק ואנשק אותך",
     "עכשיו את סתם רעה!",
     "למה את עושה לי את זה?",
-    "בבקשה תני לי צ'אנס!",
-    "אני מתחנן שתפסיקי!",
-    "טוב, בואי נתחיל מהתחלה.."
+    "יהיה טעיםםםםם",
+    "אאוץ",
+    "טוב,  תנסי שוב.."
 ];
 
 const no_button = document.getElementById('no-button');
@@ -63,6 +63,28 @@ yes_button.addEventListener('click', () => {
     // show message div
     let message = document.getElementsByClassName('message')[0];
     message.style.display = "block";
+
+    // Trigger confetti
+    var duration = 3 * 1000;
+    var animationEnd = Date.now() + duration;
+    var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    function random(min, max) {
+        return Math.random() * (max - min) + min;
+    }
+
+    var interval = setInterval(function () {
+        var timeLeft = animationEnd - Date.now();
+
+        if (timeLeft <= 0) {
+            return clearInterval(interval);
+        }
+
+        var particleCount = 50 * (timeLeft / duration);
+        // since particles fall down, start a bit higher than random
+        confetti({ ...defaults, particleCount, origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 } });
+        confetti({ ...defaults, particleCount, origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 } });
+    }, 250);
 });
 
 function refreshBanner() {

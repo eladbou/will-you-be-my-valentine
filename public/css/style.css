@@ -1,98 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap');
+
 body {
-    background-color: white;
-    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
     flex-direction: column;
-}
-
-.buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    flex-direction: row;
-    align-items: end;
-    flex-wrap: wrap;
-}
-
-#no-button {
-    margin: 0 10px;
-    color: white;
-    background-color: red;
-    height: 40px !important;
-    width: auto;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-
-    p {
-        margin: 0;
-        object-fit: contain;
-    }
-}
-
-#yes-button {
-    margin: 0 10px;
-    color: white;
-    border: none;
-    background-color: green;
-    cursor: pointer;
-    height: 40px;
-
-    p {
-        margin: 0;
-        object-fit: contain;
-    }
-}
-
-/* Make responsive for mobile */
-@media (max-width: 768px) {
-    body {
-        padding: 0 20px;
-    }
+    /* Stacking items vertically */
 }
 
 .container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    /* Make padding small so image is the main content */
+    padding: 20px;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    /* Fixed width for desktop card */
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(5px);
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin-top: 20px;
-    padding: 20px;
-    text-align: center;
-}
-
-.message {
-    display: none;
+    margin-bottom: 20px;
+    /* Space between card and buttons */
 }
 
 .banner-gif {
     width: 100%;
-    height: auto;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
 
-    img {
-        width: auto;
-        height: 250px;
+.banner-gif img {
+    width: 90%;
+    /* User requested 90% of white background */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+/* Buttons are now outside container */
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Prevent stretch */
+    gap: 20px;
+    flex-wrap: wrap;
+    z-index: 10;
+}
+
+button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#yes-button {
+    background: #ff4d6d;
+    color: white;
+}
+
+#yes-button:hover {
+    background: #ff2a50;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+}
+
+#no-button {
+    background: #e0e0e0;
+    color: #333;
+}
+
+#no-button:hover {
+    background: #d6d6d6;
+}
+
+/* Message styling (also outside container now) */
+.message {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.8);
+    /* Optional background for readability */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.message h2 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    color: #ff4d6d;
+    margin: 0;
+}
+
+.message h4 {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #ff4d6d;
+}
+
+/* Floating Hearts Background Animation */
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -100px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    clip-path: path('M10 3.22l-.61-.6a5.5 5.5 0 0 0-7.78 7.77L10 18.78l8.39-8.4a5.5 5.5 0 0 0-7.78-7.77l-.61.61z');
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
     }
 }
 
-
-
-.creator {
-    text-decoration: none;
-    color: #333;
+.heart:nth-child(1) {
+    left: 10%;
+    animation-duration: 8s;
+    animation-delay: 0s;
 }
 
-.creator:visited {
-    text-decoration: none;
-    color: #333;
+.heart:nth-child(2) {
+    left: 20%;
+    animation-duration: 10s;
+    animation-delay: 2s;
 }
 
-.creator:hover {
-    text-decoration: underline;
-    color: #555;
+.heart:nth-child(3) {
+    left: 50%;
+    animation-duration: 6s;
+    animation-delay: 4s;
+}
+
+.heart:nth-child(4) {
+    left: 70%;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.heart:nth-child(5) {
+    left: 85%;
+    animation-duration: 7s;
+    animation-delay: 3s;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        width: 85%;
+    }
+
+    .banner-gif img {
+        width: 100%;
+        /* On mobile make it fill width */
+    }
 }
