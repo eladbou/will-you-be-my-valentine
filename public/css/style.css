@@ -80,26 +80,7 @@ body {
     }
 }
 
-.language-selector {
-    margin-top: 30px;
-    position: unset;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
 
-.language-selector label {
-    margin-right: 10px;
-}
-
-.language-selector select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-}
 
 .creator {
     text-decoration: none;
@@ -114,18 +95,4 @@ body {
 .creator:hover {
     text-decoration: underline;
     color: #555;
-}
-
-/* CSS For Mobile */
-@media (max-width: 768px) {
-    .language-selector {
-        position: unset;
-        margin-top: 30px;
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-    }
 }
